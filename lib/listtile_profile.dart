@@ -1,5 +1,10 @@
+// ignore_for_file: camel_case_types, non_constant_identifier_names
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
+
+import 'package:image_picker/image_picker.dart';
 
 class ListTile_Profile extends StatefulWidget {
   const ListTile_Profile({
@@ -12,36 +17,74 @@ class ListTile_Profile extends StatefulWidget {
 
 class _ListTile_ProfileState extends State<ListTile_Profile> {
   static var listnama = [
+    "Harion Donika",
+    "Kiki Antonika",
+    "Ade Tri Putra",
+    "Eko Aji Saputra",
     "Muhammad Taufik Ramadhan",
-    "Anisa Muliani Febiana",
-    "Andri Prasetio",
+    "Edriati",
+    "Syafrizal",
   ];
 
-  static var listnotelp = [
-    "085831391581",
-    "089646689836",
-    "082113015602",
+  static var urutansilsilah = [
+    "Anak ke 1",
+    "Anak ke 2",
+    "Anak ke 3",
+    "Anak ke 4",
+    "Anak ke 5",
+    "Mama",
+    "Bapak",
   ];
+
+  static var foto_profil = [
+    "Doni",
+    "Kiki",
+    "Ade",
+    "Eko",
+    "Opik",
+    "Mama",
+    "Bapak",
+  ];
+
+  void _randomProfile(int random) {
+    return setState(
+      () {
+        shownama = listnama[random];
+        showsilsilah = urutansilsilah[random];
+        showfoto = foto_profil[random];
+      },
+    );
+  }
+
+  var showfoto = "Opik";
   var shownama = "Muhammad Taufik Ramadhan";
-
-  var showtelp = "085831391581";
+  var showsilsilah = "Anak ke 5";
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
       dense: true,
       contentPadding: const EdgeInsets.only(left: 15, top: 10),
-      leading: const CircleAvatar(
-        backgroundImage: NetworkImage(
-            "https://cdn0-production-images-kly.akamaized.net/VT-lRzXrTni_sY60CWdG8Z3gnUE=/640x360/smart/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/medias/1803883/original/018366800_1513428575-20171216-Muhammad_Ali_2.jpg"),
+      leading: GestureDetector(
+        onTap: () async {
+          _dialogbuilder(context);
+          final ImagePicker _picker = ImagePicker();
+          final XFile? imagePicked =
+              await _picker.pickImage(source: ImageSource.gallery);
+          String? image = imagePicked?.path;
+          FirebaseFirestore.instance
+              .collection("users")
+              .doc(FirebaseAuth.instance.currentUser!.uid).path;
+          setState(() {});
+        },
+        child: CircleAvatar(
+          backgroundImage: AssetImage("images/$showfoto.jpeg"),
+        ),
       ),
       trailing: IconButton(
         onPressed: () {
           var random = Random().nextInt(listnama.length);
-          setState(() {
-            shownama = listnama[random];
-            showtelp = listnotelp[random];
-          });
+          _randomProfile(random);
         },
         icon: const Icon(
           Icons.refresh,
@@ -53,9 +96,26 @@ class _ListTile_ProfileState extends State<ListTile_Profile> {
         style: const TextStyle(color: Colors.white),
       ),
       subtitle: Text(
-        showtelp,
+        showsilsilah,
         style: const TextStyle(color: Colors.white),
       ),
+    );
+  }
+
+  Future<void> _dialogbuilder(BuildContext context) {
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: AspectRatio(
+            aspectRatio: 1 / 1,
+            child: Image(
+              fit: BoxFit.cover,
+              image: AssetImage("images/$showfoto.jpeg"),
+            ),
+          ),
+        );
+      },
     );
   }
 }

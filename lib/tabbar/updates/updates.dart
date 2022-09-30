@@ -17,8 +17,8 @@ class _UpdatesTabBarState extends State<UpdatesTabBar> {
       children: [
         const BackGround_Layout(),
         Column(
-          children: [
-            Card_Awal(),
+          children: const [
+            Card_Awal_Updates(),
             Expanded(
               child: Promo(),
             ),

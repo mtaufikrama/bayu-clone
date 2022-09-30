@@ -3,16 +3,16 @@
 import 'package:flutter/material.dart';
 import 'menu_topup.dart';
 
-class Card_TopUp extends StatefulWidget {
-  const Card_TopUp({
+class Card_Awal_Plan extends StatefulWidget {
+  const Card_Awal_Plan({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<Card_TopUp> createState() => _Card_TopUpState();
+  State<Card_Awal_Plan> createState() => _Card_Awal_PlanState();
 }
 
-class _Card_TopUpState extends State<Card_TopUp> {
+class _Card_Awal_PlanState extends State<Card_Awal_Plan> {
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -46,7 +46,7 @@ class _Card_TopUpState extends State<Card_TopUp> {
           SizedBox(
             height: 70,
             child: Row(
-              children: const [
+              children: [
                 Expanded(
                   flex: 1,
                   child: Menu_TopUp(

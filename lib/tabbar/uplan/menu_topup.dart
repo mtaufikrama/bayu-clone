@@ -1,5 +1,6 @@
 // ignore_for_file: camel_case_types
 
+import 'package:bayu/inputpage.dart';
 import 'package:flutter/material.dart';
 
 class Menu_TopUp extends StatelessWidget {
@@ -16,7 +17,12 @@ class Menu_TopUp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        print("$text");
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => InputPage(),
+          ),
+        );
       },
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -28,6 +34,7 @@ class Menu_TopUp extends StatelessWidget {
             text,
             style: const TextStyle(
               fontSize: 10,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ],

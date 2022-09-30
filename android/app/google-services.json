@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "202378330417",
+    "project_id": "coba-fcm-56374",
+    "storage_bucket": "coba-fcm-56374.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:202378330417:android:a1c53de55c46b2dadd3010",
+        "android_client_info": {
+          "package_name": "com.example.bayu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "202378330417-329sd3ailkqml96fmcq8ptv6k8g713hj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bayu",
+            "certificate_hash": "e1cc24e0b895a741cc605f65b4987b528be8f4e0"
+          }
+        },
+        {
+          "client_id": "202378330417-708cdilsavtvuks3jhqjg3im32tgcgje.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtYIXSh0lNmTVyh2LxKnWwHsGr12WOKpA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "202378330417-708cdilsavtvuks3jhqjg3im32tgcgje.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

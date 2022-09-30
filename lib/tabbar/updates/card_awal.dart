@@ -1,7 +1,9 @@
+// ignore_for_file: camel_case_types
+
 import 'package:flutter/material.dart';
 
-class Card_Awal extends StatelessWidget {
-  const Card_Awal({
+class Card_Awal_Updates extends StatelessWidget {
+  const Card_Awal_Updates({
     Key? key,
   }) : super(key: key);
 
@@ -72,7 +74,9 @@ class Card_Awal extends StatelessWidget {
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.bold),
                         ),
-                        SizedBox(height: 5,),
+                        SizedBox(
+                          height: 5,
+                        ),
                       ],
                     ),
                   ),
@@ -96,7 +100,9 @@ class Card_Awal extends StatelessWidget {
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.bold),
                         ),
-                        SizedBox(height: 5,),
+                        SizedBox(
+                          height: 5,
+                        ),
                       ],
                     ),
                   ),
