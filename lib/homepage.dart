@@ -1,10 +1,7 @@
-import 'package:bayu/email_signin_page.dart';
-import 'package:bayu/main.dart';
 import 'package:bayu/tabbar/utainment/utainment.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:onesignal_flutter/onesignal_flutter.dart';
-import 'blank.dart';
+// import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'listtile_profile.dart';
 import 'tabbar/updates/updates.dart';
 import 'tabbar/uplan/uplan.dart';
@@ -17,18 +14,18 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  @override
-  void initState() {
-    OneSignal.shared.setNotificationWillShowInForegroundHandler(
-        (OSNotificationReceivedEvent event) {
-      event.complete(event.notification);
-    });
+  // @override
+  // void initState() {
+  //   OneSignal.shared.setNotificationWillShowInForegroundHandler(
+  //       (OSNotificationReceivedEvent event) {
+  //     event.complete(event.notification);
+  //   });
 
-    OneSignal.shared
-        .setNotificationOpenedHandler((OSNotificationOpenedResult result) {});
+  //   OneSignal.shared
+  //       .setNotificationOpenedHandler((OSNotificationOpenedResult result) {});
 
-    super.initState();
-  }
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -85,13 +82,13 @@ class _MyHomePageState extends State<MyHomePage> {
           width: 100,
           child: IconButton(
             onPressed: () {
-              FirebaseAuth.instance.signOut().then((value) {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (_) => MyApp(),
-                  ),
-                );
-              });
+              // FirebaseAuth.instance.signOut().then((value) {
+              //   Navigator.of(context).push(
+              //     MaterialPageRoute(
+              //       builder: (_) => MyApp(),
+              //     ),
+              //   );
+              // });
             },
             icon: Image.asset("images/Help.png"),
           ),

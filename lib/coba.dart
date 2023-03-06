@@ -1,5 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class NyobaGaes extends StatefulWidget {
@@ -20,16 +20,16 @@ class _NyobaGaesState extends State<NyobaGaes> {
             Text(email == null ? "" : email.toString()),
             ElevatedButton(
               onPressed: () {
-                FirebaseFirestore.instance
-                    .collection('users')
-                    .doc("L6FxFpUoDqb20oM4vhJ8yaltxdp1")
-                    .get()
-                    .then(
-                  (DocumentSnapshot documentSnapshot) {
-                    print(documentSnapshot["email"]);
-                    print(FirebaseAuth.instance.currentUser!.uid);
-                  },
-                );
+                // FirebaseFirestore.instance
+                //     .collection('users')
+                //     .doc("L6FxFpUoDqb20oM4vhJ8yaltxdp1")
+                //     .get()
+                //     .then(
+                //   (DocumentSnapshot documentSnapshot) {
+                //     print(documentSnapshot["email"]);
+                //     print(FirebaseAuth.instance.currentUser!.uid);
+                //   },
+                // );
               },
               child: Text("submit data"),
             ),

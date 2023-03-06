@@ -1,6 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
 class EmailSignInPage extends StatelessWidget {
@@ -22,16 +22,16 @@ class EmailSignInPage extends StatelessWidget {
               'SIGN IN WITH EMAIL/PASSWORD',
             ),
             const SizedBox(height: 10),
-            StreamBuilder<User?>(
-              stream: FirebaseAuth.instance.userChanges(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return Text("SIGNED IN ${snapshot.data?.email}");
-                } else {
-                  return Text("You haven't signed in yet");
-                }
-              },
-            ),
+            // StreamBuilder<User?>(
+            //   stream: FirebaseAuth.instance.userChanges(),
+            //   builder: (context, snapshot) {
+            //     if (snapshot.hasData) {
+            //       return Text("SIGNED IN ${snapshot.data?.email}");
+            //     } else {
+            //       return Text("You haven't signed in yet");
+            //     }
+            //   },
+            // ),
             Container(
               margin: const EdgeInsets.fromLTRB(30, 15, 30, 10),
               padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 15),
@@ -68,27 +68,27 @@ class EmailSignInPage extends StatelessWidget {
                     onPressed: () async {
                       if (emailController.text.isNotEmpty &&
                           passwordController.text.isNotEmpty) {
-                        try {
-                          await FirebaseAuth.instance
-                              .createUserWithEmailAndPassword(
-                                  email: emailController.text,
-                                  password: passwordController.text)
-                              .then((authResult) async {
-                            String? fcmToken =  
-                                await FirebaseMessaging.instance.getToken();
-                            User? users = authResult.user;
+                        // try {
+                        //   await FirebaseAuth.instance
+                        //       .createUserWithEmailAndPassword(
+                        //           email: emailController.text,
+                        //           password: passwordController.text)
+                        //       .then((authResult) async {
+                        //     String? fcmToken =
+                        //         await FirebaseMessaging.instance.getToken();
+                        //     User? users = authResult.user;
 
-                            FirebaseFirestore.instance
-                                .collection("users")
-                                .doc(users?.uid)
-                                .set({
-                              "email": users?.email,
-                              "Token": fcmToken,
-                            });
-                          });
-                        } on FirebaseAuthException catch (e) {
-                          showNotification(context, e.message.toString());
-                        }
+                        //     FirebaseFirestore.instance
+                        //         .collection("users")
+                        //         .doc(users?.uid)
+                        //         .set({
+                        //       "email": users?.email,
+                        //       "Token": fcmToken,
+                        //     });
+                        //   });
+                        // } on FirebaseAuthException catch (e) {
+                        //   showNotification(context, e.message.toString());
+                        // }
                       } else {
                         showNotification(context, "Isi Email dan Password");
                       }
@@ -108,14 +108,14 @@ class EmailSignInPage extends StatelessWidget {
                           backgroundColor: MaterialStateProperty.all(
                               Colors.orange.shade900)),
                       onPressed: () async {
-                        try {
-                          await FirebaseAuth.instance
-                              .signInWithEmailAndPassword(
-                                  email: emailController.text,
-                                  password: passwordController.text);
-                        } on FirebaseAuthException catch (e) {
-                          showNotification(context, e.message.toString());
-                        }
+                        // try {
+                        //   await FirebaseAuth.instance
+                        //       .signInWithEmailAndPassword(
+                        //           email: emailController.text,
+                        //           password: passwordController.text);
+                        // } on FirebaseAuthException catch (e) {
+                        //   showNotification(context, e.message.toString());
+                        // }
                       },
                       child: const Text("Sign In")),
                 ),
@@ -123,7 +123,7 @@ class EmailSignInPage extends StatelessWidget {
             ),
             TextButton(
                 onPressed: () async {
-                  FirebaseAuth.instance.signOut();
+                  // FirebaseAuth.instance.signOut();
                 },
                 child: Text(
                   'Log Out',
@@ -132,14 +132,14 @@ class EmailSignInPage extends StatelessWidget {
             TextButton(
                 onPressed: () async {
                   if (emailController.text.isNotEmpty) {
-                    try {
-                      FirebaseAuth.instance
-                          .sendPasswordResetEmail(email: emailController.text);
-                      showNotification(
-                          context, "Lihat Kotak Masuk / Spam pada Email");
-                    } on FirebaseAuthException catch (e) {
-                      showNotification(context, e.message.toString());
-                    }
+                    // try {
+                    //   FirebaseAuth.instance
+                    //       .sendPasswordResetEmail(email: emailController.text);
+                    //   showNotification(
+                    //       context, "Lihat Kotak Masuk / Spam pada Email");
+                    // } on FirebaseAuthException catch (e) {
+                    //   showNotification(context, e.message.toString());
+                    // }
                   } else {
                     showNotification(context, "Isi terlebih dahulu email anda");
                   }

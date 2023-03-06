@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class InputPage extends StatefulWidget {
@@ -15,8 +15,8 @@ class _InputPageState extends State<InputPage> {
 
   @override
   Widget build(BuildContext context) {
-    FirebaseFirestore firebase = FirebaseFirestore.instance;
-    CollectionReference users = firebase.collection("Users");
+    // FirebaseFirestore firebase = FirebaseFirestore.instance;
+    // CollectionReference users = firebase.collection("Users");
 
     return SafeArea(
       child: Scaffold(
@@ -38,12 +38,14 @@ class _InputPageState extends State<InputPage> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  if (namecontroller.text != "" && agecontroller.text != "" && schoolcontroller.text != "") {
-                    users.add({
-                      "nama": namecontroller.text,
-                      "umur": int.tryParse(agecontroller.text),
-                      "jurusan": schoolcontroller.text,
-                    });
+                  if (namecontroller.text != "" &&
+                      agecontroller.text != "" &&
+                      schoolcontroller.text != "") {
+                    // users.add({
+                    //   "nama": namecontroller.text,
+                    //   "umur": int.tryParse(agecontroller.text),
+                    //   "jurusan": schoolcontroller.text,
+                    // });
                     namecontroller.text = "";
                     agecontroller.text = "";
                     schoolcontroller.text = "";
@@ -58,34 +60,40 @@ class _InputPageState extends State<InputPage> {
                 child: Text("submit"),
               ),
               Expanded(
-                child: StreamBuilder<QuerySnapshot>(
-                  stream: users.snapshots(),
-                  builder: (_, snapshot) {
-                    if (snapshot.hasError) {
-                      return const Text('Something went wrong');
-                    }
-    
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Text("Loading");
-                    }
-    
-                    return ListView(
-                      children: snapshot.data!.docs
-                          .map(
-                            (DocumentSnapshot document) {
-                              Map<String, dynamic> data =
-                                  document.data()! as Map<String, dynamic>;
-                              return DataInput(
-                                  nama: data['nama'],
-                                  umur: data['umur'],
-                                  jurusan: data['jurusan']);
-                            },
-                          )
-                          .toList()
-                          .cast(),
-                    );
-                  },
+                child: Text(
+                  "text",
+                  style: TextStyle(
+                    fontSize: 12.0,
+                  ),
                 ),
+                // child: StreamBuilder<QuerySnapshot>(
+                //   stream: users.snapshots(),
+                //   builder: (_, snapshot) {
+                //     if (snapshot.hasError) {
+                //       return const Text('Something went wrong');
+                //     }
+
+                //     if (snapshot.connectionState == ConnectionState.waiting) {
+                //       return const Text("Loading");
+                //     }
+
+                //     return ListView(
+                //       children: snapshot.data!.docs
+                //           .map(
+                //             (DocumentSnapshot document) {
+                //               Map<String, dynamic> data =
+                //                   document.data()! as Map<String, dynamic>;
+                //               return DataInput(
+                //                   nama: data['nama'],
+                //                   umur: data['umur'],
+                //                   jurusan: data['jurusan']);
+                //             },
+                //           )
+                //           .toList()
+                //           .cast(),
+                //     );
+                //   },
+                // ),
               ),
             ],
           ),
